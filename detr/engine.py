@@ -87,8 +87,7 @@ def evaluate(model, criterion, postprocessors, data_loader, base_ds, device, out
 
     print(metric_logger.log_every(data_loader, 10, header))
     print(type(metric_logger.log_every(data_loader, 10, header)))
-    print(metric_logger.log_every(data_loader, 10, header).shape)
-#     for samples, targets in metric_logger.log_every(data_loader, 10, header):
+    for samples, targets in metric_logger.log_every(data_loader, 10, header):
 #         samples = samples.to(device)
 #         targets = [{k: v.to(device) for k, v in t.items()} for t in targets]
 
