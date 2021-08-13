@@ -13,8 +13,6 @@ import util.misc as utils
 from datasets.coco_eval import CocoEvaluator
 from datasets.panoptic_eval import PanopticEvaluator
 
-x = None
-
 def train_one_epoch(model: torch.nn.Module, criterion: torch.nn.Module,
                     data_loader: Iterable, optimizer: torch.optim.Optimizer,
                     device: torch.device, epoch: int, max_norm: float = 0):
@@ -27,7 +25,7 @@ def train_one_epoch(model: torch.nn.Module, criterion: torch.nn.Module,
     print_freq = 10
 
     print(metric_logger.log_every(data_loader, 10, header))
-    x = metric_logger.log_every(data_loader, 10, header)
+#     x = metric_logger.log_every(data_loader, 10, header)
     print(type(metric_logger.log_every(data_loader, 10, header)))
     for samples, targets in metric_logger.log_every(data_loader, print_freq, header):
         samples = samples.to(device)
@@ -91,8 +89,7 @@ def evaluate(model, criterion, postprocessors, data_loader, base_ds, device, out
 
     print(metric_logger.log_every(data_loader, 10, header))
     print(type(metric_logger.log_every(data_loader, 10, header)))
-#     for samples, targets in metric_logger.log_every(data_loader, 10, header):
-    for samples, targets in x:
+    for samples, targets in metric_logger.log_every(data_loader, 10, header):
       print('samples: {}, targets: {}'.format(samples, targets))
       
 #         samples = samples.to(device)
