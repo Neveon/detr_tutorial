@@ -152,6 +152,7 @@ def build(image_set, args):
         "train": (root / "WIDER_train/images", root / f'train.json'),
         "val": (root / "WIDER_val/images", root / f'val.json'),
     }
+    print("face.py PATHS:" + str(PATHS))
 
     img_folder, ann_file = PATHS[image_set]
     dataset = FaceDetection(img_folder, ann_file, transforms=make_Face_transforms(image_set), return_masks=args.masks)
