@@ -18,7 +18,9 @@ def get_coco_api_from_dataset(dataset):
 
 def build_dataset(image_set, args):
     print("Building datset..")
-    print("DATASET FILE: ", args.dataset_file)
+    print("DATASET ARGS: ")
+    print(str(args))
+    print("\n\n\n")
     if args.dataset_file == 'coco':
         return build_coco(image_set, args)
     if args.dataset_file == 'face':
