@@ -87,11 +87,8 @@ def evaluate(model, criterion, postprocessors, data_loader, base_ds, device, out
             output_dir=os.path.join(output_dir, "panoptic_eval"),
         )
 
-    print(metric_logger.log_every(data_loader, 10, header))
-    print(type(metric_logger.log_every(data_loader, 10, header)))
     for samples, targets in metric_logger.log_every(data_loader, 10, header):
-      print('samples: {}, targets: {}'.format(samples, targets))
-# Lines 95 to 130 were commented out previously to solve a bug. We are commenting to see if the error is due to the dataset used.   
+      print('samples: {}, targets: {}'.format(samples, targets))  
       samples = samples.to(device)
       targets = [{k: v.to(device) for k, v in t.items()} for t in targets]
 
